@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="~/Assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/css/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body>
+
+    <section id="navbar_menu">
+        <nav class="navbar navbar-dark navbar-expand-lg navbar-light bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="@Url.Action("Index", "Profile")">
+                    <img src="~/Assets/images/logo.png" width="80">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="@Url.Action("Index", "Profile")">HOME </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="sub_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                LEAVE <i class="fas fa-angle-down fa-xs"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="sub_menu">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target=".apply_leave">Apply Leave</a>
+                                <a class="dropdown-item" href="@Url.Action("My_Leave", "Profile")">My Leave</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="sub_menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                MY ACCOUNT <i class="fas fa-angle-down fa-xs"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="sub_menu">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target=".change_password">Change Pasword</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#log_out_modal">Log Out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    @RenderBody()
+
+    <script src="~/Assets/js/jquery.js"></script>
+    <script src="~/Assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Assets/js/script.js"></script>
+</body>
+</html>

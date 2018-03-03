@@ -1,0 +1,40 @@
+﻿@using HRM_Management_System.Models
+
+@model Leave_App
+
+<section id="apply_modals">
+    <div class="modal fade apply_leave" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myLargeModalLabel">Apply Leave</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <form method="post" action="/Partials/Apply_Leave">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Leave date : </label>
+                                        <input type="date" class="form-control" name="leave_date">
+                                    </div> 
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Leave resion : </label>
+                                        <textarea class="form-control" style="height: 124px" name="leave_reason"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-success float-right">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

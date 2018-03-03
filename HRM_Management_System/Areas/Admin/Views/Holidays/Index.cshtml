@@ -1,0 +1,39 @@
+﻿@model IEnumerable<HRM_Management_System.Models.Holiday>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.holiday_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.holiday_date)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.holiday_name)
+        </td>
+        <td>
+            @item.holiday_date.Value.ToString("MMM, dd yyyy")
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) | 
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

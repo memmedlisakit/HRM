@@ -1,0 +1,38 @@
+﻿@using HRM_Management_System.Models
+
+@model Employee
+
+<div class="col-md-3 text-center">
+    <div class="profile_img"> 
+        <img src="~/Uploads/@Model.emp_photo" class="img-fluid"/>
+    </div>
+    <div class="user_about">
+        <h5>@Model.emp_fullname</h5>
+        <span>@Model.Designation.desig_name</span>
+    </div>
+    <div class="work_for">
+        <p>
+            <b>At work for :</b>
+            <span>
+           @Model.emp_date_of_joining.Value.ToString("dd-MMM-yyyy")
+            </span>
+        </p>
+    </div>
+    <hr>
+    <div class="user_points">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>5/12</h5>
+                <span>ATTENDANCE</span>
+            </div>
+            <div class="col-md-4">
+                <h5>@ViewBag.leave_count</h5>
+                <span>LEAVE</span>
+            </div>
+            <div class="col-md-4">
+                <h5>@ViewBag.award_count</h5>
+                <span>AWARDS</span>
+            </div>
+        </div>
+    </div>
+</div>

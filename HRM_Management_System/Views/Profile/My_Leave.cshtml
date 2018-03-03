@@ -1,0 +1,76 @@
+﻿@using HRM_Management_System.Models
+
+@model IEnumerable<Leave_App>
+@{
+    ViewBag.Title = "My_Leave";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="profile">
+    <div class="container">
+        <div class="row">
+            @Html.Action("Index", "Partials")
+            <div class="col-md-9">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fas fa-tasks"></i> My Leave Applications
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Date</th>
+                                        <th>Reason</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.leave_emp_id</td>
+                                            <td>@item.leave_date.Value.ToString("dd-MMM-yyyy")</td>
+                                            <td>@item.leave_reason</td>
+                                            <td>
+                                                <h5>
+                                                    @if (item.Leave_status.status_name == "Waiting")
+                                                    {
+                                                        <span class="badge badge-warning">@item.Leave_status.status_name</span>
+                                                    }
+                                                    else if (item.Leave_status.status_name == "Accepted")
+                                                    {
+                                                        <span class="badge badge-success">@item.Leave_status.status_name</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="badge badge-danger">@item.Leave_status.status_name</span>
+                                                    }
+                                                </h5>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm">
+                                                    <i class="fas fa-eye"></i> View
+                                                </button>
+                                            </td>
+                                        </tr>    
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@Html.Action("Apply_Leave", "Partials")
+
+@Html.Action("Change_Password", "Partials")
+
+@Html.Action("Log_Out", "Partials")

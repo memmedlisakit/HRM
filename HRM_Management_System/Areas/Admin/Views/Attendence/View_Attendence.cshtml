@@ -1,0 +1,78 @@
+﻿@using HRM_Management_System.Models
+
+@model IEnumerable<Attendence>
+
+@{
+    ViewBag.Title = "View_Attendence";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Data Table All Attendences
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Type of Leave</th>
+                            <th>Reason</th>
+                            <th>Date</th> 
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Employee.id</td>
+                                <td>@item.Employee.emp_fullname</td>
+                                <td>
+                                    @if (item.atten_status == true)
+                                    {
+                                        <label class="alert alert-success">Active</label>
+                                    }
+                                    else
+                                    {
+                                        <label class="alert alert-danger">Passive</label>
+                                    }
+                                </td>
+                                <td>
+                                   @if (item.atten_leave_type_id == null)
+                                   {
+                                       <span>Ishde olub</span>
+                                   }
+                                   else
+                                   {
+                                    <span>@item.Leave_type.type_name</span>
+                                   }
+                                </td>
+                                <td>
+                                    @if (item.atten_reason == null)
+                                    {
+                                        <span>Ishde olub</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@item.atten_reason</span>
+                                    }
+                                </td>
+                                <td>
+                                   @item.atten_date.Value.ToString("dd MMMM, yyyy")
+                                </td> 
+                                <td>
+                                    <a class="btn btn-danger" href="@Url.Action("Delete", "Attendence", new { id=item.id })"><i class="fa fa-times"></i> Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+        </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>

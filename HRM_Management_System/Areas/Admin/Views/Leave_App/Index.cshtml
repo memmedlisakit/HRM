@@ -1,0 +1,59 @@
+﻿@model IEnumerable<HRM_Management_System.Models.Leave_App>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+ 
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.leave_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.leave_reason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.emp_fullname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Leave_status.status_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.leave_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.leave_reason)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.emp_fullname)
+        </td>
+        <td>
+            @if (item.Leave_status.status_name == "Waiting")
+            {
+                <span class="badge badge-warning">@item.Leave_status.status_name</span>
+            }
+            else if (item.Leave_status.status_name == "Accepted")
+            {
+                <span class="badge badge-success">@item.Leave_status.status_name</span>
+            }
+            else
+            {
+                <span class="badge badge-danger">@item.Leave_status.status_name</span>
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

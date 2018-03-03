@@ -1,0 +1,57 @@
+﻿@model IEnumerable<HRM_Management_System.Models.Award>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.award_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.award_reason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.award_cash_price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.award_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.emp_fullname)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.award_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.award_reason)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.award_cash_price)
+        </td>
+        <td>
+            @item.award_date.Value.ToString("MMM, dd yyyy")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.emp_fullname)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) | 
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

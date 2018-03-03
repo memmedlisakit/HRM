@@ -1,0 +1,55 @@
+﻿@using HRM_Management_System.Models
+
+@model IEnumerable<Employee>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Data Table Check Attendence
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <form method="post" action="/Attendence/Save">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Type of Leave</th>
+                            <th>Reason</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.id</td>
+                                <td>@item.emp_fullname</td>
+                                <td>
+                                    <input value="@item.id" class="form-control status" type="checkbox"/>
+                                </td>
+                                <td>
+                                    <select class="form-control"  style="display:none">
+                                        @foreach (var type in ViewBag.leave_types)
+                                        {
+                                            <option value="@type.id">@type.type_name</option>
+                                        }
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" style="display:none"/>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <button type="submit" class="btn btn-info">Submit</button>
+            </form> 
+        </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+

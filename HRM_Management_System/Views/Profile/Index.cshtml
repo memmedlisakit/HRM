@@ -1,0 +1,169 @@
+﻿@using HRM_Management_System.ViewModels
+
+@model ProfileViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+<section id="profile">
+    <div class="container">
+        <div class="row">
+            @Html.Action("Index", "Partials")
+           
+            <div class="col-md-9">
+                <div class="contain">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="item_title">
+                                        <h5> <i class="fas fa-pencil-alt"></i>  Personal Details</h5>
+                                    </div>
+                                    <div class="item_contain">
+                                        <table class="table table-light margin-bottom-0">
+                                            <tbody>
+                                                <tr>
+                                                    <td> <span class="primry-link">Full Name</span> </td>
+                                                    <td>@Model._employe.emp_fullname</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="primry-link">Father Name</span></td>
+                                                    <td>@Model._employe.emp_fathername</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="primry-link">DOB</span></td>
+                                                    <td>@Model._employe.emp_dateof_birth.Value.ToString("dd-MMM-yyyy")</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="primry-link">Gender</span></td>
+                                                    <td>@Model._employe.Gender.gender_name</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="primry-link">Email</span></td>
+                                                    <td>@Model._employe.emp_email</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="primry-link">Phone</span></td>
+                                                    <td>@Model._employe.emp_phone</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><span class="primry-link">Local Address</span></td>
+                                                    <td>@Model._employe.emp_address</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="item_title">
+                                        <h5><i class="fas fa-briefcase"></i>Company Details</h5>
+                                    </div>
+                                    <div class="item_contain">
+                                        <table class="table table-light margin-bottom-0">
+                                            <tbody>
+                                                <tr>
+                                                    <td> <span class="primry-link">Employee ID</span> </td>
+                                                    <td>@Model._employe.id</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td> <span class="primry-link">Department</span> </td>
+                                                    <td>@Model._employe.Departament.depart_name</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> <span class="primry-link">Designation</span> </td>
+                                                    <td>@Model._employe.Designation.desig_name</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td> <span class="primry-link">Date of Joining</span> </td>
+                                                    <td>@Model._employe.emp_date_of_joining.Value.ToString("dd-MMM-yyyy")</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> <span class="primry-link">Salary ($)</span> </td>
+                                                    <td>
+                                                        <p>
+                                                            extra : @Model._employe.emp_salary $
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="item_title">
+                                        <h5><i class="fas fa-bullhorn"></i>Notice Board</h5>
+                                    </div>
+                                    <div class="item_contain scrool_contain">
+                                        @foreach (var item in Model._notices)
+                                        {
+                                            <div class="item">
+                                                <div class="date text-center">
+                                                    <h6>11</h6>
+                                                    <small>02, 2017</small>
+                                                </div>
+                                                <a href="#">@item.notice_title</a>
+                                                <p>@item.notice_content</p>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="item_title">
+                                        <h5><i class="far fa-paper-plane"></i> Upcoming Holiday</h5>
+                                    </div>
+                                    <div class="item_contain scrool_contain">
+                                        @foreach (var item in Model._holidays)
+                                        {
+                                            <div class="alert-blocks alert-info ">
+                                                <span>@item.holiday_name</span>
+                                                <small class="float-right"><em>@item.holiday_date.Value.ToString("dd MMM, yyyy")</em></small>
+                                            </div>
+                                        }
+                                        </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="item_title">
+                                        <h5><i class="fas fa-trophy"></i>Awards</h5>
+                                    </div>
+                                    <div class="item_contain scrool_contain awards">
+                                        @foreach (var item in Model._awards)
+                                        {
+                                            <div class="alert-blocks">
+                                                <b>@item.Employee.emp_fullname </b>
+                                                <small class="award-name">@item.award_name</small>
+                                                <small class="float-right"><em>@item.award_date.Value.ToString("MMMM, yyyy")</em></small>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@Html.Action("Apply_Leave", "Partials")
+
+
+@Html.Action("Change_Password", "Partials")
+
+@Html.Action("Log_Out", "Partials")
+
+
+

@@ -1,0 +1,35 @@
+﻿@model HRM_Management_System.Models.Departament
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Departament</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.depart_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.depart_name)
+        </dd>
+        <dt>
+            Designations :
+        </dt>
+            @foreach (var item in ViewBag.designations)
+            {
+             <dd>@item.desig_name</dd> 
+            }
+       
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
